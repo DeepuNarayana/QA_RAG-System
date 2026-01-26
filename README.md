@@ -171,8 +171,14 @@ npm run test:ui                # Interactive UI
 ## 📖 API Documentation
 
 ### Access API Docs
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+> **⚠️ Important**: Backend must be running to access API documentation!
+
+**After starting the backend** (`python main.py`), visit:
+- **Swagger UI**: http://localhost:8000/docs (interactive testing)
+- **ReDoc**: http://localhost:8000/redoc (read-only documentation)
+- **OpenAPI JSON**: http://localhost:8000/openapi.json (raw schema)
+
+**Troubleshooting**: If you get an error, see [API_DOCUMENTATION_TROUBLESHOOTING.md](API_DOCUMENTATION_TROUBLESHOOTING.md)
 
 ### Main Endpoints
 
