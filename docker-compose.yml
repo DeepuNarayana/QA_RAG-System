@@ -31,6 +31,8 @@ services:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-book_management}
       SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-your-api-key}
+      # Point backend to the mock LLM service within the compose network
+      LLM_URL: http://mock-llm:5000
       ENVIRONMENT: ${ENVIRONMENT:-development}
       DEBUG: ${DEBUG:-true}
     ports:
@@ -38,6 +40,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      mock-llm:
+        condition: service_started
     volumes:
       - ./backend:/app
     healthcheck:
@@ -63,6 +67,23 @@ services:
     networks:
       - app-network
 
+  # Mock LLM service (simple HTTP API for local development)
+  mock-llm:
+    build:
+      context: ./mock_llm
+      dockerfile: Dockerfile
+    container_name: mock-llm
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5005:5000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
   # Redis (optional, for caching)
   redis:
     image: redis:7-alpine
