@@ -41,7 +41,7 @@ def sample_user_data():
         "username": "testuser",
         "email": "testuser@example.com",
         "full_name": "Test User",
-        "password": "TestPassword123",
+        "password": "<REDACTED_PASSWORD>",
     }
 
 

@@ -38,7 +38,7 @@ aws rds create-db-instance \
   --engine postgres \
   --engine-version 14.7 \
   --master-username admin \
-  --master-user-password YourSecurePassword123! \
+  --master-user-password <REDACTED_PASSWORD> \
   --allocated-storage 100 \
   --storage-type gp2 \
   --multi-az \

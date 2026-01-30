@@ -421,7 +421,7 @@ aws rds create-db-instance \
   --db-instance-class db.t3.micro \
   --engine postgres \
   --master-username admin \
-  --master-user-password YourSecurePassword123! \
+   --master-user-password <REDACTED_PASSWORD> \
   --allocated-storage 20
 
 # Create ECR repositories
