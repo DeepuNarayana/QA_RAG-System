@@ -15,6 +15,7 @@ from app.services import ReviewService
 from app.utils import NotFoundError
 from app.core.security import get_current_user
 from fastapi import Depends
+from app.services.borrow_service import BorrowService
 
 router = APIRouter(prefix="/books/{book_id}/reviews", tags=["reviews"])
 
@@ -48,9 +49,12 @@ async def create_review(
         HTTPException: If creation fails
     """
     try:
-        review = await ReviewService.create_review(
-            db, book_id, user_id, review_data
-        )
+        # enforce constraint: user must have borrowed the book before reviewing
+        has_borrowed = await BorrowService.user_has_borrowed(db, user_id, book_id)
+        if not has_borrowed:
+            raise HTTPException(status_code=403, detail="User must borrow the book before reviewing")
+
+        review = await ReviewService.create_review(db, book_id, user_id, review_data)
         return ReviewResponse.from_orm(review)
     except NotFoundError as e:
         raise HTTPException(status_code=404, detail=e.message)

@@ -97,3 +97,20 @@ class Document(Base):
 
     # Relationships
     owner = relationship("User", back_populates="documents")
+
+
+class Borrow(Base):
+    """Borrow record for tracking borrows and returns."""
+
+    __tablename__ = "borrows"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    book_id = Column(Integer, ForeignKey("books.id"), nullable=False)
+    borrowed_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    returned_at = Column(DateTime, nullable=True)
+    due_date = Column(DateTime, nullable=True)
+
+    # relationships
+    user = relationship("User")
+    book = relationship("Book")

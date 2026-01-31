@@ -13,6 +13,9 @@ from app.core import get_db
 from app.core.security import get_current_user
 from app.schemas import BookCreate, BookResponse, BookUpdate
 from app.services import BookService
+from app.core.di import get_storage_provider
+from fastapi import UploadFile, File
+from app.services.borrow_service import BorrowService
 from app.utils import NotFoundError
 
 router = APIRouter(prefix="/books", tags=["books"])
@@ -49,6 +52,58 @@ async def create_book(
         return BookResponse.from_orm(book)
     except Exception as e:
         raise HTTPException(status_code=500, detail="Book creation failed")
+
+
+
+@router.post("/{book_id}/upload")
+async def upload_book_file(
+    book_id: int,
+    file: UploadFile = File(...),
+    db: Annotated[AsyncSession, Depends(get_db)] = Depends(get_db),
+    user=Depends(get_current_user),
+):
+    """Upload a book file and attach it to a document record."""
+    storage = get_storage_provider()
+    content = await file.read()
+    # create a unique filename prefix with book id
+    filename = f"book_{book_id}_{file.filename}"
+    path = await storage.save(filename, content)
+
+    # create document record
+    from app.models import Document
+
+    doc = Document(owner_id=user.id, filename=file.filename, file_path=path, document_type=file.content_type, file_size=len(content))
+    db.add(doc)
+    await db.commit()
+    await db.refresh(doc)
+
+    return {"message": "uploaded", "document_id": doc.id, "path": path}
+
+
+@router.post("/{book_id}/borrow")
+async def borrow_book(
+    book_id: int,
+    db: Annotated[AsyncSession, Depends(get_db)] = Depends(get_db),
+    user=Depends(get_current_user),
+):
+    try:
+        record = await BorrowService.borrow_book(db, user.id, book_id)
+        return {"message": "borrowed", "borrow_id": record.id, "due_date": record.due_date}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/{book_id}/return")
+async def return_book(
+    book_id: int,
+    db: Annotated[AsyncSession, Depends(get_db)] = Depends(get_db),
+    user=Depends(get_current_user),
+):
+    try:
+        await BorrowService.return_book(db, user.id, book_id)
+        return {"message": "returned"}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("", response_model=List[BookResponse])

@@ -31,6 +31,11 @@ class Settings(BaseSettings):
     # When using a remote or mock LLM service, point to its base URL
     llm_url: str = "http://localhost:5005"
 
+    # Storage provider selection: 'local' or 's3'
+    storage_provider: str = "local"
+    # When using local storage, this is the base directory for files
+    storage_url: str = "./data/files"
+
     # Redis Configuration
     redis_url: str = "redis://localhost:6379/0"
 
