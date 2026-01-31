@@ -13,6 +13,7 @@ from app.core.logging import get_logger
 from app.models import Review, Book
 from app.schemas import ReviewCreate
 from app.utils import NotFoundError
+from app.services.review_analysis import schedule_review_analysis
 
 logger = get_logger(__name__)
 
@@ -55,6 +56,12 @@ class ReviewService:
 
             # Update book average rating
             await ReviewService._update_book_average_rating(db, book_id)
+
+            # Schedule background analysis of reviews
+            try:
+                schedule_review_analysis(book_id)
+            except Exception:
+                logger.warning("Failed to schedule review analysis")
 
             logger.info(f"Review created for book {book_id}")
             return review

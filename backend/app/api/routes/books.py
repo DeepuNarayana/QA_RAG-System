@@ -16,6 +16,7 @@ from app.services import BookService
 from app.core.di import get_storage_provider
 from fastapi import UploadFile, File
 from app.services.borrow_service import BorrowService
+from app.services.document_ingest import schedule_ingest
 from app.utils import NotFoundError
 
 router = APIRouter(prefix="/books", tags=["books"])
@@ -76,6 +77,13 @@ async def upload_book_file(
     db.add(doc)
     await db.commit()
     await db.refresh(doc)
+
+    # schedule ingestion asynchronously
+    try:
+        schedule_ingest(doc.id, book_id)
+    except Exception:
+        logger = __import__("app").core.logging.get_logger(__name__)
+        logger.warning("Failed to schedule ingestion for document %s", doc.id)
 
     return {"message": "uploaded", "document_id": doc.id, "path": path}
 

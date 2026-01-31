@@ -51,6 +51,7 @@ class Book(Base):
     average_rating = Column(Float, default=0.0)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    review_summary = Column(Text, nullable=True)
 
     # Relationships
     owner = relationship("User", back_populates="books")
@@ -97,6 +98,19 @@ class Document(Base):
 
     # Relationships
     owner = relationship("User", back_populates="documents")
+
+
+class UserPreference(Base):
+    """User preferences for recommendations."""
+
+    __tablename__ = "user_preferences"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, unique=True)
+    preferences_text = Column(Text, nullable=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = relationship("User")
 
 
 class Borrow(Base):

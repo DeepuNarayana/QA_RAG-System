@@ -13,6 +13,8 @@ from app.core import get_db
 from app.schemas import QARequest, QAResponse, SummaryRequest
 from app.services import llama_service
 from app.utils import AIServiceError
+from app.services.recommendation_service import recommend_for_user
+from fastapi import Query
 
 router = APIRouter(prefix="/ai", tags=["ai"])
 
@@ -71,6 +73,21 @@ async def get_recommendations(
         raise HTTPException(status_code=503, detail=e.message)
     except Exception as e:
         raise HTTPException(status_code=500, detail="Recommendation generation failed")
+
+
+
+@router.get("/recommendations/user/{user_id}")
+async def get_recommendations_for_user(user_id: int, top_k: int = Query(5, gt=0, lt=50)) -> dict:
+    """Return content-based recommendations for a user using stored preferences."""
+    try:
+        scored = await recommend_for_user(user_id, top_k)
+        items = [
+            {"book_id": b.id, "title": b.title, "score": score}
+            for b, score in scored
+        ]
+        return {"recommendations": items}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("/qa", response_model=QAResponse)
