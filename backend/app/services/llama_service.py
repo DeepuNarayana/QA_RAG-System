@@ -1,11 +1,15 @@
-"""
-AI Service Module
+"""AI provider abstraction and default implementations.
 
-Handles integration with Llama3 via OpenRouter for content summarization
-and embedding generation.
+This module provides a small dependency-injection-friendly abstraction for
+LLM providers. The application should import `llama_service` (keeps
+backwards-compatibility) which is a provider instance selected based
+on `settings.llm_provider`.
 """
 
-from typing import List, Optional
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import List
 
 import httpx
 from app.core.config import settings
@@ -15,38 +19,32 @@ from app.utils.exceptions import AIServiceError
 logger = get_logger(__name__)
 
 
-class LlamaService:
-    """Service for Llama3 model integration."""
+class LLMProvider(ABC):
+    """Abstract base class for LLM providers."""
 
-    def __init__(self):
-        """Initialize Llama service."""
+    @abstractmethod
+    async def generate_summary(self, content: str, max_length: int = 500) -> str:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def generate_embeddings(self, text: str) -> List[float]:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def generate_recommendations(self, user_preferences: str, top_k: int = 5) -> str:
+        raise NotImplementedError
+
+
+class OpenRouterProvider(LLMProvider):
+    """Provider that uses OpenRouter (Llama3) API."""
+
+    def __init__(self) -> None:
         self.api_key = settings.openrouter_api_key
         self.model = settings.llama_model
         self.base_url = "https://openrouter.ai/api/v1"
 
-    async def generate_summary(
-        self, content: str, max_length: int = 500
-    ) -> str:
-        """
-        Generate a summary for the given content using Llama3.
-
-        Args:
-            content: Content to summarize
-            max_length: Maximum length of summary
-
-        Returns:
-            str: Generated summary
-
-        Raises:
-            AIServiceError: If API call fails
-        """
+    async def _post_chat(self, prompt: str, max_tokens: int = 256) -> str:
         try:
-            prompt = f"""Please provide a concise summary of the following content in {max_length} characters or less:
-
-{content}
-
-Summary:"""
-
             async with httpx.AsyncClient() as client:
                 response = await client.post(
                     f"{self.base_url}/chat/completions",
@@ -62,128 +60,95 @@ Summary:"""
                             {"role": "user", "content": prompt},
                         ],
                         "temperature": 0.7,
-                        "max_tokens": int(max_length / 4),  # Rough estimate
+                        "max_tokens": max_tokens,
                     },
                 )
 
             if response.status_code != 200:
-                error_detail = response.text
-                logger.error(f"Llama3 API error: {error_detail}")
-                raise AIServiceError(f"Failed to generate summary: {error_detail}")
+                logger.error("OpenRouter API error: %s", response.text)
+                raise AIServiceError(f"OpenRouter error: {response.text}")
 
             result = response.json()
-            summary = result.get("choices", [{}])[0].get("message", {}).get("content", "")
-
-            if not summary:
-                raise AIServiceError("Empty summary generated")
-
-            logger.info("Summary generated successfully")
-            return summary.strip()
+            return result.get("choices", [{}])[0].get("message", {}).get("content", "")
 
         except httpx.HTTPError as e:
-            logger.error(f"HTTP error during summarization: {str(e)}")
+            logger.error("HTTP error during OpenRouter request: %s", str(e))
             raise AIServiceError(f"HTTP error: {str(e)}")
-        except Exception as e:
-            logger.error(f"Unexpected error during summarization: {str(e)}")
-            raise AIServiceError(f"Summarization failed: {str(e)}")
+
+    async def generate_summary(self, content: str, max_length: int = 500) -> str:
+        prompt = (
+            f"Please provide a concise summary of the following content in {max_length} characters or less:\n\n{content}\n\nSummary:"
+        )
+        summary = await self._post_chat(prompt, max_tokens=int(max_length / 4))
+        if not summary:
+            raise AIServiceError("Empty summary generated")
+        return summary.strip()
 
     async def generate_embeddings(self, text: str) -> List[float]:
-        """
-        Generate embeddings for the given text.
-
-        Note: For production, consider using a dedicated embedding model.
-        This is a placeholder implementation.
-
-        Args:
-            text: Text to embed
-
-        Returns:
-            List[float]: Embedding vector
-
-        Raises:
-            AIServiceError: If embedding generation fails
-        """
+        # Production should use a dedicated embedding model; keep parity with
+        # prior implementation using sentence-transformers.
         try:
-            # In production, use a proper embedding model like sentence-transformers
-            # For now, this is a placeholder
-            logger.warning("Using placeholder embeddings. Use proper embedding model in production.")
-            
-            # Generate a simple hash-based embedding
+            logger.warning("Using sentence-transformers for local embeddings.")
             from sentence_transformers import SentenceTransformer
-            
-            model = SentenceTransformer('all-MiniLM-L6-v2')
-            embeddings = model.encode(text)
-            
-            return embeddings.tolist()
 
+            model = SentenceTransformer("all-MiniLM-L6-v2")
+            embeddings = model.encode(text)
+            return embeddings.tolist()
         except Exception as e:
-            logger.error(f"Error generating embeddings: {str(e)}")
+            logger.error("Embedding generation error: %s", str(e))
             raise AIServiceError(f"Embedding generation failed: {str(e)}")
 
-    async def generate_recommendations(
-        self, user_preferences: str, top_k: int = 5
-    ) -> str:
-        """
-        Generate book recommendations based on user preferences.
+    async def generate_recommendations(self, user_preferences: str, top_k: int = 5) -> str:
+        prompt = (
+            f"Based on the following user preferences, suggest {top_k} books that the user might enjoy:\n\n"
+            f"User Preferences: {user_preferences}\n\nPlease provide {top_k} book recommendations with brief explanations.\n\nRecommendations:"
+        )
+        recs = await self._post_chat(prompt, max_tokens=1000)
+        if not recs:
+            raise AIServiceError("Empty recommendations generated")
+        return recs.strip()
 
-        Args:
-            user_preferences: User's preferences description
-            top_k: Number of recommendations to return
 
-        Returns:
-            str: Recommendations
+class MockLLMProvider(LLMProvider):
+    """Simple mock provider for local development and tests.
 
-        Raises:
-            AIServiceError: If API call fails
-        """
+    If `settings.llm_url` points to an HTTP mock service, this provider will
+    forward requests there. Otherwise it returns canned responses.
+    """
+
+    def __init__(self) -> None:
+        self.base_url = settings.llm_url
+
+    async def _forward(self, path: str, payload: dict) -> str:
         try:
-            prompt = f"""Based on the following user preferences, suggest {top_k} books that the user might enjoy:
-
-User Preferences: {user_preferences}
-
-Please provide {top_k} book recommendations with brief explanations.
-
-Recommendations:"""
-
             async with httpx.AsyncClient() as client:
-                response = await client.post(
-                    f"{self.base_url}/chat/completions",
-                    headers={
-                        "Authorization": f"Bearer {self.api_key}",
-                        "HTTP-Referer": "http://localhost:8000",
-                        "X-Title": "Intelligent Book Management System",
-                    },
-                    json={
-                        "model": self.model,
-                        "messages": [
-                            {"role": "system", "content": "You are a helpful book recommendation assistant."},
-                            {"role": "user", "content": prompt},
-                        ],
-                        "temperature": 0.7,
-                        "max_tokens": 1000,
-                    },
-                )
+                response = await client.post(f"{self.base_url}/{path.lstrip('/')}", json=payload)
+            response.raise_for_status()
+            return response.json().get("result", response.text)
+        except Exception:
+            # Fall back to a simple canned response
+            return "[mocked response]"
 
-            if response.status_code != 200:
-                error_detail = response.text
-                logger.error(f"Llama3 API error: {error_detail}")
-                raise AIServiceError(f"Failed to generate recommendations: {error_detail}")
+    async def generate_summary(self, content: str, max_length: int = 500) -> str:
+        payload = {"content": content, "max_length": max_length}
+        return await self._forward("generate-summary", payload)
 
-            result = response.json()
-            recommendations = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+    async def generate_embeddings(self, text: str) -> List[float]:
+        # Return a deterministic small vector for tests
+        return [float(ord(c) % 10) for c in text[:64]]
 
-            if not recommendations:
-                raise AIServiceError("Empty recommendations generated")
-
-            logger.info("Recommendations generated successfully")
-            return recommendations.strip()
-
-        except httpx.HTTPError as e:
-            logger.error(f"HTTP error during recommendation generation: {str(e)}")
-            raise AIServiceError(f"HTTP error: {str(e)}")
-        except Exception as e:
-            logger.error(f"Unexpected error during recommendation generation: {str(e)}")
-            raise AIServiceError(f"Recommendation generation failed: {str(e)}")
+    async def generate_recommendations(self, user_preferences: str, top_k: int = 5) -> str:
+        payload = {"user_preferences": user_preferences, "top_k": top_k}
+        return await self._forward("recommendations", payload)
 
 
-llama_service = LlamaService()
+def get_llm_provider() -> LLMProvider:
+    provider = settings.llm_provider.lower()
+    if provider == "mock":
+        return MockLLMProvider()
+    # default to OpenRouter
+    return OpenRouterProvider()
+
+
+# Backwards-compatible name used across the codebase
+llama_service: LLMProvider = get_llm_provider()

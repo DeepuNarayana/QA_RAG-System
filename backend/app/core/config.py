@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     # Llama3 / OpenRouter Configuration
     openrouter_api_key: str = ""
     llama_model: str = "meta-llama/llama-3-8b-instruct"
+    # LLM provider selection: 'openrouter' or 'mock'
+    llm_provider: str = "openrouter"
+    # When using a remote or mock LLM service, point to its base URL
+    llm_url: str = "http://localhost:5005"
 
     # Redis Configuration
     redis_url: str = "redis://localhost:6379/0"
