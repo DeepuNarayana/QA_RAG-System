@@ -10,6 +10,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core import get_db
+from app.core.security import get_current_user
 from app.schemas import BookCreate, BookResponse, BookUpdate
 from app.services import BookService
 from app.utils import NotFoundError
@@ -17,20 +18,17 @@ from app.utils import NotFoundError
 router = APIRouter(prefix="/books", tags=["books"])
 
 
-def get_current_user_id(
-    # This would typically get the user from the token in production
-    # For now, it's a placeholder
+async def _get_current_user(
+    user=Depends(get_current_user),
 ) -> int:
-    """Get current user ID from token."""
-    # In production, validate JWT token and extract user_id
-    return 1
+    return user.id
 
 
 @router.post("", response_model=BookResponse)
 async def create_book(
     book_data: BookCreate,
     db: Annotated[AsyncSession, Depends(get_db)],
-    owner_id: Annotated[int, Depends(get_current_user_id)] = 1,
+    owner_id: Annotated[int, Depends(_get_current_user)] = 1,
 ) -> BookResponse:
     """
     Create a new book.

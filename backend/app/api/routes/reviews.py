@@ -13,15 +13,16 @@ from app.core import get_db
 from app.schemas import ReviewCreate, ReviewResponse
 from app.services import ReviewService
 from app.utils import NotFoundError
+from app.core.security import get_current_user
+from fastapi import Depends
 
 router = APIRouter(prefix="/books/{book_id}/reviews", tags=["reviews"])
 
 
-def get_current_user_id(
-    # Placeholder for token extraction
+async def _get_current_user(
+    user=Depends(get_current_user),
 ) -> int:
-    """Get current user ID from token."""
-    return 1
+    return user.id
 
 
 @router.post("", response_model=ReviewResponse)
@@ -29,7 +30,7 @@ async def create_review(
     book_id: int,
     review_data: ReviewCreate,
     db: Annotated[AsyncSession, Depends(get_db)],
-    user_id: Annotated[int, Depends(get_current_user_id)] = 1,
+    user_id: Annotated[int, Depends(_get_current_user)] = 1,
 ) -> ReviewResponse:
     """
     Create a new review for a book.

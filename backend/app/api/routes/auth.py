@@ -14,6 +14,8 @@ from app.core.security import TokenData
 from app.schemas import LoginRequest, TokenResponse, UserCreate, UserResponse
 from app.services import UserService
 from app.utils import AuthenticationError, ConflictError
+from app.core.security import revoke_token, oauth2_scheme, decode_token
+from fastapi import Depends
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
 
@@ -85,3 +87,11 @@ async def login(
         raise HTTPException(status_code=401, detail=e.message)
     except Exception as e:
         raise HTTPException(status_code=500, detail="Login failed")
+
+
+
+@router.post("/logout", status_code=204)
+async def logout(token: str = Depends(oauth2_scheme)):
+    """Revoke the current access token (logout)."""
+    await revoke_token(token)
+    return None
