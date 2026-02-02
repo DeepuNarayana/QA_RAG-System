@@ -55,7 +55,13 @@ async def create_review(
             raise HTTPException(status_code=403, detail="User must borrow the book before reviewing")
 
         review = await ReviewService.create_review(db, book_id, user_id, review_data)
+
+        # Trigger async review analysis
+        await task_queue.enqueue(analyze_and_update_review_consensus(book_id))
+
         return ReviewResponse.from_orm(review)
+    except HTTPException:
+        raise
     except NotFoundError as e:
         raise HTTPException(status_code=404, detail=e.message)
     except Exception as e:

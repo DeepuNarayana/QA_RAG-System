@@ -35,6 +35,7 @@ dependencies = [
     "faiss-cpu>=1.7.4",
     "redis>=5.0.0",
     "aioredis>=2.0.1",
+    "aioboto3>=12.0.0",
 ]
 
 [project.optional-dependencies]
@@ -87,3 +88,30 @@ ignore_missing_imports = true
 testpaths = ["tests"]
 asyncio_mode = "auto"
 addopts = "-v --cov=app --cov-report=html --cov-report=term"
+[tool.pylint.messages_control]
+disable = [
+    "C0111",  # missing-docstring
+    "C0103",  # invalid-name
+    "R0903",  # too-few-public-methods
+    "R0913",  # too-many-arguments
+    "W0212",  # protected-access
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.design]
+max-locals = 15
+max-arguments = 7
+max-attributes = 10
+
+[tool.pylint.basic]
+good-names = ["i", "j", "k", "ex", "Run", "_", "id", "x", "y", "z", "df", "db", "e"]
+
+[tool.flake8]
+max-line-length = 88
+exclude = [".git", "__pycache__", ".venv", "build", "dist", ".mypy_cache"]
+ignore = ["E203", "W503", "E501"]
+per-file-ignores = [
+    "__init__.py:F401",
+]

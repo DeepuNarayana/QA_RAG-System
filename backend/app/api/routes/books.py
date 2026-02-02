@@ -4,10 +4,13 @@ Book Routes
 Handles book-related API endpoints.
 """
 
+import logging
+import logging
 from typing import Annotated, List
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 from app.core import get_db
 from app.core.security import get_current_user

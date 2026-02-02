@@ -5,7 +5,6 @@ LLM providers. The application should import `llama_service` (keeps
 backwards-compatibility) which is a provider instance selected based
 on `settings.llm_provider`.
 """
-
 from __future__ import annotations
 
 from abc import ABC, abstractmethod

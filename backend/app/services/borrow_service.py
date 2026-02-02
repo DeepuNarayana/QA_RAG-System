@@ -37,7 +37,20 @@ class BorrowService:
 
     @staticmethod
     async def user_has_borrowed(db: AsyncSession, user_id: int, book_id: int) -> bool:
+        """Check if user has ever borrowed this book."""
         stmt = select(Borrow).where(Borrow.user_id == user_id, Borrow.book_id == book_id)
+        res = await db.execute(stmt)
+        record = res.scalars().first()
+        return record is not None
+
+    @staticmethod
+    async def user_currently_borrowed(db: AsyncSession, user_id: int, book_id: int) -> bool:
+        """Check if user currently has an active borrow (not returned)."""
+        stmt = select(Borrow).where(
+            Borrow.user_id == user_id, 
+            Borrow.book_id == book_id, 
+            Borrow.returned_at == None
+        )
         res = await db.execute(stmt)
         record = res.scalars().first()
         return record is not None

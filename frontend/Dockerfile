@@ -1,26 +1,59 @@
-FROM node:18-alpine as builder
+# Frontend Dockerfile - Next.js React Application
+# Multi-stage build for optimization
+
+FROM node:20-alpine as builder
+
+# Install dependencies
+WORKDIR /app
+COPY frontend/package*.json ./
+
+# Install ALL dependencies (including dev) for build
+RUN npm install
+
+# Copy source code
+COPY frontend/ .
+
+# Build Next.js application
+RUN npm run build
+
+# ============================================
+# Production stage
+# ============================================
+FROM node:20-alpine
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+# Copy built application from builder
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-COPY . .
-RUN npm run build
+# Copy package files for runtime
+COPY --from=builder /app/package*.json ./
 
-FROM nginx:alpine
+# Set environment variables
+ENV NODE_ENV=production \
+    NODE_OPTIONS="--max-old-space-size=1024"
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy built frontend
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Expose port
-EXPOSE 80
+# Switch to non-root user
+USER nextjs
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost/health || exit 1
+    CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
-CMD ["nginx", "-g", "daemon off;"]
+# Expose port
+EXPOSE 3000
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["/sbin/dumb-init", "--"]
+
+# Run Next.js server
+CMD ["node", "server.js"]

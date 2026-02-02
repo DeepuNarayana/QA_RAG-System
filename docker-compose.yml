@@ -1,109 +1,301 @@
 version: '3.9'
 
+# ============================================
+# Intelligent Book Management System
+# Docker Compose Configuration
+# ============================================
+
 services:
+  # ============================================
   # PostgreSQL Database
+  # ============================================
   postgres:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     container_name: book-management-db
+    restart: unless-stopped
+
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_USER: ${POSTGRES_USER:-bookuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secure_password_123}
       POSTGRES_DB: ${POSTGRES_DB:-book_management}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
     ports:
       - "5432:5432"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 1024M
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=database"
+
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-user}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bookuser}"]
       interval: 10s
       timeout: 5s
       retries: 5
+
     networks:
       - app-network
 
-  # Backend API
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: book-management-backend
-    environment:
-      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-book_management}
-      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
-      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-your-api-key}
-      # Point backend to the mock LLM service within the compose network
-      LLM_URL: http://mock-llm:5000
-      ENVIRONMENT: ${ENVIRONMENT:-development}
-      DEBUG: ${DEBUG:-true}
-    ports:
-      - "8000:8000"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      mock-llm:
-        condition: service_started
-    volumes:
-      - ./backend:/app
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network
+    labels:
+      - "com.book-management.service=database"
 
-  # Frontend
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: book-management-frontend
-    environment:
-      VITE_API_URL: http://backend:8000
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-    networks:
-      - app-network
-
-  # Mock LLM service (simple HTTP API for local development)
-  mock-llm:
-    build:
-      context: ./mock_llm
-      dockerfile: Dockerfile
-    container_name: mock-llm
-    environment:
-      - FLASK_ENV=development
-    ports:
-      - "5005:5000"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network
-  # Redis (optional, for caching)
+  # ============================================
+  # Redis Cache (Optional)
+  # ============================================
   redis:
     image: redis:7-alpine
     container_name: book-management-redis
-    ports:
-      - "6379:6379"
+    restart: unless-stopped
+
+    command: redis-server --appendonly yes
+
     volumes:
       - redis_data:/data
+
+    ports:
+      - "6379:6379"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=cache"
+
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
+
     networks:
       - app-network
 
+    labels:
+      - "com.book-management.service=cache"
+
+  # ============================================
+  # Mock LLM Service
+  # Simple Flask API for local testing
+  # ============================================
+  mock-llm:
+    build:
+      context: .
+      dockerfile: mock_llm/Dockerfile
+
+    container_name: book-management-mock-llm
+    restart: unless-stopped
+
+    environment:
+      FLASK_ENV: ${ENVIRONMENT:-production}
+      FLASK_APP: app.py
+
+    ports:
+      - "5005:5000"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=llm"
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - app-network
+
+    labels:
+      - "com.book-management.service=llm"
+
+  # ============================================
+  # Backend API Service
+  # FastAPI Application
+  # ============================================
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+
+    container_name: book-management-backend
+    restart: unless-stopped
+
+    environment:
+      # Database Configuration
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-bookuser}:${POSTGRES_PASSWORD:-secure_password_123}@postgres:5432/${POSTGRES_DB:-book_management}
+
+      # Security
+      SECRET_KEY: ${SECRET_KEY:-your-secret-key-change-this-in-production}
+      ALGORITHM: ${ALGORITHM:-HS256}
+
+      # LLM Configuration
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      LLM_URL: http://mock-llm:5000
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LLAMA_MODEL: ${LLAMA_MODEL:-meta-llama/llama-3-8b-instruct}
+
+      # Storage Configuration
+      STORAGE_PROVIDER: ${STORAGE_PROVIDER:-local}
+      STORAGE_URL: ${STORAGE_URL:-./uploads}
+
+      # Redis Configuration
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+
+      # Application Configuration
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      DEBUG: ${DEBUG:-false}
+
+      # CORS Configuration
+      CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:3000", "http://localhost:3001", "http://frontend:3000"]}
+
+    ports:
+      - "8000:8000"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 768M
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+        labels: "service=backend"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mock-llm:
+        condition: service_healthy
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    networks:
+      - app-network
+
+    labels:
+      - "com.book-management.service=api"
+
+  # ============================================
+  # Frontend Service
+  # Next.js React Application
+  # ============================================
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+
+    container_name: book-management-frontend
+    restart: unless-stopped
+
+    environment:
+      # Backend API URL
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://backend:8000}
+
+      # Environment
+      NODE_ENV: ${NODE_ENV:-production}
+
+    ports:
+      - "3000:3000"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=frontend"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    networks:
+      - app-network
+
+    labels:
+      - "com.book-management.service=frontend"
+
+# ============================================
+# Volumes
+# ============================================
 volumes:
   postgres_data:
+    driver: local
   redis_data:
+    driver: local
 
+# ============================================
+# Networks
+# ============================================
 networks:
   app-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16

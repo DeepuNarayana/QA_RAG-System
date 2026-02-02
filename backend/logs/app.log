@@ -1,0 +1,747 @@
+2026-02-01 19:40:40 - app.core.database - ERROR - init_db:64 - Failed to initialize database: (sqlite3.OperationalError) table users already exists
+[SQL: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	username VARCHAR(255) NOT NULL, 
+	email VARCHAR(255) NOT NULL, 
+	hashed_password VARCHAR(255) NOT NULL, 
+	full_name VARCHAR(255), 
+	is_active BOOLEAN, 
+	role VARCHAR(50) NOT NULL, 
+	created_at DATETIME NOT NULL, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:40 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:40:41 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:41:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:41:24 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:41:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:53 - app.core.database - INFO - close_db:72 - Database connection closed
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:46:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:46:57 - app.core.database - WARNING - seed_data:133 - Seed data skipped: Textual SQL expression 'SELECT COUNT(*) FROM book...' should be explicitly declared as text('SELECT COUNT(*) FROM book...')
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:02 - app.core.database - INFO - close_db:140 - Database connection closed
+2026-02-01 19:47:10 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:10 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:10 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:10 - app.core.database - INFO - seed_data:137 - Database seeded with initial data
+2026-02-01 19:47:12 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:13 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:13 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:14 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:14 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:14 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:16 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:47:45 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:48:06 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:48:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:48:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:26 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:31 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:32 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:32 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:32 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:38 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:39 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:39 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:39 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:44 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:47 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:51:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:27 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:34 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:34 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:34 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:34 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:34 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:35 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:37 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:52:49 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:00 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:07 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:20 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:21 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:28 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:36 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:37 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:37 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:53:54 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:58:19 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 19:59:57 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:05 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:06 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:06 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:06 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:00:11 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:09 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:16 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:16 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:16 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:16 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:34 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:44 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:03:48 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:04:12 - app.core.di - WARNING - __init__:183 - OpenRouterLLMProvider initialized but not fully implemented
+2026-02-01 20:04:12 - app.core.di - INFO - set_storage_provider:218 - Storage provider set to LocalStorageProvider
+2026-02-01 20:04:12 - app.core.di - INFO - set_llm_provider:229 - LLM provider set to OpenRouterLLMProvider
+2026-02-01 20:04:12 - app.core.di - INFO - initialize_container:295 - Dependency injection container initialized
+2026-02-01 20:04:25 - app.core.di - WARNING - __init__:183 - OpenRouterLLMProvider initialized but not fully implemented
+2026-02-01 20:04:25 - app.core.di - INFO - set_storage_provider:218 - Storage provider set to LocalStorageProvider
+2026-02-01 20:04:25 - app.core.di - INFO - set_llm_provider:229 - LLM provider set to OpenRouterLLMProvider
+2026-02-01 20:04:25 - app.core.di - INFO - initialize_container:295 - Dependency injection container initialized
+2026-02-01 20:04:25 - app.core.di - WARNING - generate_book_summary:189 - OpenRouter summarization not implemented; using mock
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:17 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:22 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:22 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:22 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:22 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:22 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:23 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:36:35 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:40:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:38 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:40:39 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:42:59 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:43:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:13 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:17 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:23 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:23 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:24 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:24 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:24 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:24 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:25 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:25 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:25 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:25 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:26 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:26 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:26 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:26 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:27 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:27 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:28 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:28 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:28 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:28 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:29 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:29 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:29 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:29 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:30 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:30 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:30 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:30 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:31 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:31 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:31 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:31 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:32 - passlib.handlers.bcrypt - WARNING - _load_backend_mixin:622 - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "D:\Deepu\LuminaLib\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-01 20:46:32 - app.services.user_service - ERROR - create_user:68 - Error creating user: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:50 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:46:55 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:47:11 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:25 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:25 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:25 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:25 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:25 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:25 - app.services.book_service - INFO - update_book:162 - Book updated: Updated Title
+2026-02-01 20:47:26 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:26 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:26 - app.services.book_service - INFO - delete_book:195 - Book deleted: Test Book
+2026-02-01 20:47:26 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:26 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:26 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 20:47:26 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:26 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:26 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 20:47:26 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:26 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 20:47:26 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 20:47:26 - app.services.review_service - INFO - delete_review:153 - Review deleted: 1
+2026-02-01 20:47:26 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - authenticate_user:148 - User authenticated: testuser
+2026-02-01 20:47:27 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:28 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:28 - app.services.user_service - INFO - update_user:192 - User updated: testuser
+2026-02-01 20:47:28 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 20:47:28 - app.services.user_service - INFO - delete_user:225 - User deleted: testuser
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:23 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:56:28 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:14 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:18 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 20:58:43 - app.core.database - INFO - close_db:146 - Database connection closed
+2026-02-01 21:03:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:04 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:05 - app.core.database - INFO - init_db:62 - Database initialized successfully
+2026-02-01 21:03:16 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:16 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:16 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:16 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:16 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:16 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:16 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:16 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.book_service - INFO - update_book:162 - Book updated: Updated Title
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.book_service - INFO - delete_book:195 - Book deleted: Test Book
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.book_service - INFO - create_book:48 - Book created: Test Book
+2026-02-01 21:03:17 - app.services.review_service - INFO - create_review:66 - Review created for book 1
+2026-02-01 21:03:17 - app.services.review_service - INFO - delete_review:153 - Review deleted: 1
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:17 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - authenticate_user:148 - User authenticated: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - update_user:192 - User updated: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - create_user:62 - User created: testuser
+2026-02-01 21:03:18 - app.services.user_service - INFO - delete_user:225 - User deleted: testuser

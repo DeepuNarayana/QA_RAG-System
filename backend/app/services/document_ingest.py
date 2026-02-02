@@ -9,17 +9,18 @@ generates a summary via the LLM provider, and updates the `Document` and
 import asyncio
 from typing import Optional
 
-from app.core.di import get_storage_provider
+from sqlalchemy import select
+
+from app.core.di import container
 from app.core.database import AsyncSessionLocal
 from app.models import Document, Book
-from app.services import llama_service
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
 
 
 async def _extract_text_from_bytes(data: bytes, filename: str) -> str:
-    # Very small, best-effort extraction: try UTF-8 decode else placeholder
+    """Extract text from bytes with best-effort UTF-8 decoding."""
     try:
         return data.decode("utf-8")
     except Exception:
@@ -29,25 +30,28 @@ async def _extract_text_from_bytes(data: bytes, filename: str) -> str:
 
 async def ingest_document(document_id: int, book_id: Optional[int] = None) -> None:
     """Ingest a document: read file, extract text, generate summary, persist results."""
-    storage = get_storage_provider()
+    storage = container.get_storage_provider()
+    llm = container.get_llm_provider()
 
     async with AsyncSessionLocal() as db:
         try:
-            doc = (await db.execute(__import__("sqlalchemy").select(Document).where(Document.id == document_id))).scalars().first()
+            result = await db.execute(select(Document).where(Document.id == document_id))
+            doc = result.scalars().first()
             if not doc:
                 logger.error("Document not found: %s", document_id)
                 return
 
             # Read file content
-            content_bytes = b""
-            async for chunk in await storage.read(doc.file_path):
-                content_bytes += chunk
+            content_bytes = await storage.read_file(doc.file_path)
+            if not content_bytes:
+                logger.error("Could not read file for document %s", document_id)
+                return
 
             text = await _extract_text_from_bytes(content_bytes, doc.filename)
 
             # Generate summary via LLM
             try:
-                summary = await llama_service.generate_summary(text, 1000)
+                summary = await llm.generate_book_summary(text)
             except Exception as e:
                 logger.error("LLM summary failed: %s", str(e))
                 summary = ""
@@ -59,19 +63,30 @@ async def ingest_document(document_id: int, book_id: Optional[int] = None) -> No
             await db.commit()
 
             if book_id:
-                b = (await db.execute(__import__("sqlalchemy").select(Book).where(Book.id == book_id))).scalars().first()
-                if b:
-                    b.summary = summary
+                result = await db.execute(select(Book).where(Book.id == book_id))
+                book = result.scalars().first()
+                if book:
+                    book.summary = summary
                     await db.commit()
 
             logger.info("Document ingested: %s", document_id)
         except Exception as e:
             logger.error("Ingestion failed for %s: %s", document_id, str(e))
-            if doc:
-                doc.ingestion_status = "failed"
-                doc.ingestion_error = str(e)
+            doc_err = None
+            try:
+                result = await db.execute(select(Document).where(Document.id == document_id))
+                doc_err = result.scalars().first()
+            except Exception:
+                pass
+            
+            if doc_err:
+                doc_err.ingestion_status = "failed"
                 await db.commit()
 
+
+async def schedule_ingest(document_id: int, book_id: Optional[int] = None) -> None:
+    """Schedule a document for ingestion (wrapper for async task queue)."""
+    await ingest_document(document_id, book_id)
 
 def schedule_ingest(document_id: int, book_id: Optional[int] = None) -> None:
     asyncio.create_task(ingest_document(document_id, book_id))

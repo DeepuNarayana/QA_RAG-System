@@ -331,9 +331,6 @@ See [SETUP_GUIDE.md](docs/SETUP_GUIDE.md) for:
 
 MIT License
 
-## 👨‍💻 Author
-
-Development Team
 
 ---
 
@@ -351,7 +348,3 @@ This project showcases:
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: January 2026
-
-For support, refer to documentation or contact the development team.

@@ -11,4 +11,12 @@ build
 *.log
 .DS_Store
 venv
-.venv
+.venv.mypy_cache
+.idea
+.vscode
+*.swp
+*.swo
+uploads
+data
+logs
+.coverage
